@@ -20,6 +20,7 @@ TODO:
 	3) functions... GORM ect.
 	4) data
 	5) auto-population functions
+
 */
 
 func main() {
