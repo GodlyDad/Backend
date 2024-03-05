@@ -2,27 +2,46 @@
 #
 # https://gqlgen.com/getting-started/
 
-type Todo {
+# bible book translation ## https://bible-go-api.rkeplin.com/v1/translations
+type Translation {
   id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
+  abbreviation: String! # NLT, KJV
+  version: String! # New Living Translation, King James Version
 }
 
-type User {
+# book in the bible # https://bible-go-api.rkeplin.com/v1/books?translation=NLT
+type Book {
   id: ID!
-  name: String!
+  name: String! # Genesis
+  testament: String! # OT (old testament) NT(new testament) ## maybe make enum
+  chapters: [Chapter!]! # maybe
+}
+
+# chapters in the bible # https://bible-go-api.rkeplin.com/v1/books/1/chapters/1?translation=NLT
+type Chapter {
+  id: ID!
+  # bookID: Book! # which book it belongs to
+  chapterID: Int! # 1
+  verseID: Int! # 1
+  verse: String! # "In the beginning God created the heavens and the earth."
 }
 
 type Query {
-  todos: [Todo!]!
+  # Get all Translation
+  translations: [Translation!]!
+  # Get all Books
+  books: [Book!]!
+  # Get all Chapters
+  chapters: [Chapter!]!
+  # Get all Verses in a chapter
+  versesInChapter(input: ID!): [Chapter!]!
 }
 
-input NewTodo {
-  text: String!
-  userId: String!
-}
+# input chapter_verse {
+#   chapterID: String!
+#   verseID: String!
+# }
 
-type Mutation {
-  createTodo(input: NewTodo!): Todo!
-}
+# type Mutation {
+#   createTodo(input: NewTodo!): Todo!
+# }

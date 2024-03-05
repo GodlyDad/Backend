@@ -11,21 +11,27 @@ import (
 	"github.com/GodlyDad/Backend/pkg/graph/model"
 )
 
-// CreateTodo is the resolver for the createTodo field.
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: CreateTodo - createTodo"))
+// Translations is the resolver for the translations field.
+func (r *queryResolver) Translations(ctx context.Context) ([]*model.Translation, error) {
+	panic(fmt.Errorf("not implemented: Translations - translations"))
 }
 
-// Todos is the resolver for the todos field.
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: Todos - todos"))
+// Books is the resolver for the books field.
+func (r *queryResolver) Books(ctx context.Context) ([]*model.Book, error) {
+	panic(fmt.Errorf("not implemented: Books - books"))
 }
 
-// Mutation returns MutationResolver implementation.
-func (r *Resolver) Mutation() MutationResolver { return &mutationResolver{r} }
+// Chapters is the resolver for the chapters field.
+func (r *queryResolver) Chapters(ctx context.Context) ([]*model.Chapter, error) {
+	panic(fmt.Errorf("not implemented: Chapters - chapters"))
+}
+
+// VersesInChapter is the resolver for the versesInChapter field.
+func (r *queryResolver) VersesInChapter(ctx context.Context, input string) ([]*model.Chapter, error) {
+	panic(fmt.Errorf("not implemented: VersesInChapter - versesInChapter"))
+}
 
 // Query returns QueryResolver implementation.
 func (r *Resolver) Query() QueryResolver { return &queryResolver{r} }
 
-type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
