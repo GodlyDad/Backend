@@ -2,22 +2,28 @@
 
 services:
 #
-  app:
+  go-app:
+    container_name: go-app
+    image: go-app
     build: .
     env_file:
       - .env
     ports:
       - "8080:8080"
-#    volumes:
-#      - .:/usr/src/app
+    volumes:
+      - ./volumes/logs:/usr/src/app
+    depends_on:
+      - postgres
+    command: go run ./pkg/server.go
   postgres:
+    container_name: postgres
     image: postgres:alpine
     env_file:
       - .env
     ports:
       - "5432:5432"
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - ./volumes/postgres:/var/lib/postgresql/data
 
 
 volumes:

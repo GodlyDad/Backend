@@ -11,3 +11,7 @@ mod-update:
 # Starts docker container(s).
 containers:
 	docker compose up
+
+clean-containers:
+	docker compose down
+	

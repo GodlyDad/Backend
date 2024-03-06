@@ -20,5 +20,5 @@ func PopulateTranslations(db *gorm.DB) error {
 		},
 	}
 
-	return db.FirstOrCreate(&translations).Error
+	return db.FirstOrCreate(&translations, translations).Error
 }

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -53,7 +52,7 @@ func main() {
 	db.AutoMigrate(&model.Book{}, &model.Translation{}, &model.Chapter{})
 
 	if err := helpers.PopulateTranslations(db); err != nil {
-		fmt.Errorf("auto-population has failed: %v", err)
+		log.Printf("auto-population has failed: %v", err)
 		return
 	}
 
